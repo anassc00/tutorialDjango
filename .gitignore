@@ -1,1 +1,3 @@
-_pycache_
+myDjangoSite/myDjangoSite/_pycache_
+myDjangoSite/polls/__pycache__
+myDjangoSite/polls/migrations/__pycache__
