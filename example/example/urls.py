@@ -1,4 +1,4 @@
-"""myDjangoSite URL Configuration
+"""example URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -14,18 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include,path
-"""
-The include() function allows referencing other URLconfs. 
-    Whenever Django encounters include(), it chops off whatever 
-    part of the URL matched up to that point and sends the 
-    remaining string to the included URLconf for further processing.
-"""
-"""
-The path() function is passed four arguments, two required: 
-    route and view, and two optional: kwargs, and name. 
-"""
+from django.urls import path
+
 urlpatterns = [
-    path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
 ]
