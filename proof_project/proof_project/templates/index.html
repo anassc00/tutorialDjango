@@ -1,5 +1,15 @@
 <html>
     <body>
-        <h1>You're at index landing.</h1>
+        <h1>{{greeting}}{{dot}} You're at index landing.</h1>
+        <p>Actual time: {{date}} </p>
+        <p><strong>Topics talking about:</strong></p>
+        <ul>
+            {% if topics %}
+                {% for topic in topics %}
+                    <li>{{topic}}</li>
+                {% endfor %}
+            {% else %}
+                <p>No topics available</p>
+            {% endif %}
     </body>
 </html>

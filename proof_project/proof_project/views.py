@@ -3,13 +3,25 @@ from django.template import Template
 from django.template import Context 
 import datetime
 
+class User(object):
+
+    def __init__(self, name, last_name):
+        self.name = name
+        self.last_name = last_name
 
 #This is the index view/landing page
 def index(request):
+
+    user = User("John", "Doe")
+    greeting = "Hello, welcome to the proof project, "
+    dot = user.name + " " + user.last_name + "."
+    subjects = ["Python", "Django", "HTML", "CSS", "JavaScript", "SQL", "Git", "GitHub", "Heroku", "Linux", "Bash", "Docker"]
+    date= datetime.datetime.now()
+    #date_format = date.strftime("%Y-%m-%d %H:%M:%S")
     index_template = open("proof_project/templates/index.html")
     template = Template(index_template.read())
     index_template.close()
-    ctx = Context()
+    ctx = Context({"greeting": greeting, "dot": dot, "date": date, "topics": subjects})
 
     document_rendered = template.render(ctx)
 
