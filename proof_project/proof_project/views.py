@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.template import Template 
 from django.template import Context 
 import datetime
+from django.template.loader import get_template
+from django.shortcuts import render
 
 class User(object):
 
@@ -17,15 +19,11 @@ def index(request):
     dot = user.name + " " + user.last_name + "."
     subjects = ["Python", "Django", "HTML", "CSS", "JavaScript", "SQL", "Git", "GitHub", "Heroku", "Linux", "Bash", "Docker"]
     date= datetime.datetime.now()
-    #date_format = date.strftime("%Y-%m-%d %H:%M:%S")
-    index_template = open("proof_project/templates/index.html")
-    template = Template(index_template.read())
-    index_template.close()
-    ctx = Context({"greeting": greeting, "dot": dot, "date": date, "topics": subjects})
+    ctx = {"greeting": greeting, "dot": dot, "date": date, "topics": subjects}
+    #template = get_template("index.html")
+    #document_rendered = template.render(ctx)
 
-    document_rendered = template.render(ctx)
-
-    return HttpResponse(document_rendered)
+    return render(request, "index.html", ctx)
 
 
 def close(resquest):
